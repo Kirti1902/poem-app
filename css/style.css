@@ -1,0 +1,295 @@
+/* Keep the original styles as is */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.form button {
+    padding: 10px 20px;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #FF4500;
+}
+
+.notebook-container {
+    margin-top: 20px;
+}
+
+.notebook-btn {
+    padding: 12px 30px;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.notebook-btn:hover {
+    background-color: #FF6347;
+}
+
+.book {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+    perspective: 1500px;
+    left: -72px;
+}
+
+.notebook {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+    display: flex;
+    justify-content: center;
+}
+
+.notebook.show {
+    transform: rotateY(0deg);
+}
+
+.pageWrapper {
+    position: relative;
+    width: 79%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    left: -46px;
+    top: 23px;
+}
+
+.page {
+    width: 48%;
+    height: 100%;
+    background-color: white;
+    margin: 0 1%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    transform-origin: center;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.action-buttons {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    left: 4px;
+}
+
+.action-buttons button {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #FF6347;
+    color: white;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    background-color: #FF4500;
+}
+
+#saveEditedPoem {
+    background-color: #FFD700;
+}
+
+#saveEditedPoem:hover {
+    background-color: #FF6347;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 500px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    font-size: 1.5rem;
+    color: #FF6347;
+    margin-bottom: 20px;
+}
+
+.modal .form input,
+.modal .form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+.modal .form button {
+    padding: 10px 20px;
+    background-color: #FF6347;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.modal .form button:hover {
+    background-color: #FF4500;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+.nav-arrows {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 10;
+}
+
+.nav-btn {
+    padding: 12px 20px;
+    background-color: transparent;
+    border: none;
+    color: #FF6347;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#prevPage {
+    left: 321px;
+    top: 115px;
+}
+
+#nextPage {
+    right: 664px;
+    top: 115px;
+}
+
+.nav-btn:hover {
+    color: #FF4500;
+    transform: scale(1.1);
+}
+
+.nav-btn:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.nav-btn:disabled:hover {
+    color: #ccc;
+}

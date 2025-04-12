@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poem Book</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./js/auth.js" defer></script> <!-- Include auth.js for checking login -->
+    <script src="./js/script.js" defer></script>
+    <script src="./js/logout.js" defer></script> <!--Include logout.js for logout functionality-->
+</head>
+<body>
+    <!-- Main Poem Book Container (Only Visible if Logged In) -->
+    <div class="container" id="poemApp">
+        <header>
+            <h1>Poem Book</h1>
+            <p>Write, View, Edit, and Delete Poems!</p>
+
+            <h2 id="usernameDisplay"></h2>
+        </header>
+
+        <!-- Add Logout Button -->
+        <button id="logoutBtn" class="notebook-btn">Logout</button>
+
+        <div class="form">
+            <input type="text" id="poemTitle" placeholder="Enter Poem Title" />
+            <textarea id="poemText" placeholder="Write your poem here..."></textarea>
+            <button id="submitPoem">Add Poem</button>
+        </div>
+
+        <div class="notebook-container">
+            <button id="openNotebook" class="notebook-btn">Open Poem Book</button>
+            <button id="saveWholeBook" class="notebook-btn">Save Whole Book as PDF</button>
+        </div>
+
+        <!-- Poem Book -->
+        <div id="notebook" class="notebook">
+            <div class="book">
+                <div class="pageWrapper" id="pageWrapper"></div>
+                <div class="nav-arrows">
+                    <button id="prevPage" class="nav-btn">&#8592;</button>
+                    <button id="nextPage" class="nav-btn">&#8594;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Poem Modal -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="viewClose">&times;</span>
+            <div>
+                <h3 id="viewTitle"></h3>
+                <p id="viewPoemText"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Poem Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="editClose">&times;</span>
+            <h2>Edit Poem</h2>
+            <input type="text" id="editTitle" />
+            <textarea id="editText" style="background: border-box;height: 66%;width: -webkit-fill-available;padding: 10px;margin: revert;"></textarea>
+            <button id="saveEditedPoem">Save</button>
+        </div>
+    </div>
+
+    <script>
+        // Ensure the login check happens when the page loads
+        window.onload = function() {
+            const loggedInUser = localStorage.getItem('currentUser'); // Check if user is logged in
+            const poemApp = document.getElementById('poemApp');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const usernameDisplay = document.getElementById('usernameDisplay');
+
+            if (loggedInUser) {
+                // Show the Poem app content and Logout button
+                poemApp.style.display = 'block'; 
+                logoutBtn.style.display = 'inline-block'; 
+                usernameDisplay.textContent = `Welcome, ${loggedInUser.username}`;
+                
+            } else {
+                // Redirect to login page if not logged in
+                window.location.href = 'login/login.html'; 
+            }
+        };
+    </script>
+</body>
+</html>

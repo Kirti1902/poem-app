@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/auth.js" defer></script>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" 
+        style="
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        outline: none;
+        "
+        placeholder="Username" />
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <button id="loginBtn">Login</button>
+        <p>Don't have an account? <span id="showSignup" style="padding: 12px;font-size: 1rem;border: 1px solid #ddd;cursor:pointer;color: white;border-radius: 10px;outline: none;background-color: #FF6347;">Sign up</span></p>
+    </div>
+
+    <script>
+        document.getElementById('showSignup').addEventListener('click', () => {
+            window.location.href = 'signup.html';  // Navigate to signup page
+        });
+    </script>
+</body>
+</html>
