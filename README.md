@@ -80,8 +80,8 @@ This app uses `localStorage` for simulating authentication. It's not secure for 
 ## 📸 Screenshots *(Optional)*
 
 > Add a few screenshots or a short GIF here to showcase the UI and experience.
-![Login Page](image.png)
-![Main Page](image-1.png)
+![Login Page](./images/image.png)
+![Main Page](./images/image-1.png)
 ---
 
 ## 💡 Future Enhancements
