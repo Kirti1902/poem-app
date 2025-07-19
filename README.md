@@ -1,5 +1,3 @@
-Absolutely! Here's a polished `README.md` for your **Poem Book App**, ideal for a GitHub repo or project showcase:
-
 ---
 
 # 📖 Poem Book App
